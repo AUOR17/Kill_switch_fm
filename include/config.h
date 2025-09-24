@@ -1,27 +1,80 @@
 #pragma once
 #include <Arduino.h>
 
-#ifndef DEVICE_ID
-#define DEVICE_ID "vehiculo-01"
+/********* UART & BAUD *********/
+#ifndef USB_BAUD
+#define USB_BAUD 115200
 #endif
 
-// Communication 
-#define USB_BAUD 115200   // Para debug en Serial
-#define GPS_BAUD 9600     // Para módulo GPS
+#ifndef GPS_BAUD
+#define GPS_BAUD 9600
+#endif
 
+#ifndef GPS_UART_NUM
+#define GPS_UART_NUM 1
+#endif
 
-// Pines 
-static constexpr uint8_t PIN_PWM_1 = 25;
-static constexpr uint8_t PIN_PWM_2 = 26;
-static constexpr uint8_t PIN_PWM_3 = 27;
-static constexpr uint8_t PIN_PWM_4 = 14;
+#ifndef GPS_RX_PIN
+#define GPS_RX_PIN 16
+#endif
+#ifndef GPS_TX_PIN
+#define GPS_TX_PIN 17
+#endif
 
-static constexpr uint8_t PIN_HALL_1 = 32;
-static constexpr uint8_t PIN_HALL_2 = 33;
-static constexpr uint8_t PIN_HALL_3 = 34; 
-static constexpr uint8_t PIN_HALL_4 = 35; 
+/********* DRV8833 PINS *********/
+#ifndef DRV1_AIN1
+#define DRV1_AIN1 23
+#endif
+#ifndef DRV1_AIN2
+#define DRV1_AIN2 22
+#endif
+#ifndef DRV1_BIN1
+#define DRV1_BIN1 19
+#endif
+#ifndef DRV1_BIN2
+#define DRV1_BIN2 18
+#endif
 
-// Frecuencias y tiempos
+#ifndef DRV2_AIN1
+#define DRV2_AIN1 13
+#endif
+#ifndef DRV2_AIN2
+#define DRV2_AIN2 21
+#endif
+#ifndef DRV2_BIN1
+#define DRV2_BIN1 32
+#endif
+#ifndef DRV2_BIN2
+#define DRV2_BIN2 33
+#endif
+
+#ifndef DRV_STBY
+#define DRV_STBY 27
+#endif
+
+/********* SPEED SENSORS *********/
+#ifndef SPEED_S1_PIN
+#define SPEED_S1_PIN 25
+#endif
+#ifndef SPEED_S2_PIN
+#define SPEED_S2_PIN 26
+#endif
+#ifndef SPEED_S3_PIN
+#define SPEED_S3_PIN 36
+#endif
+#ifndef SPEED_S4_PIN
+#define SPEED_S4_PIN 39
+#endif
+
+/********* PWM *********/
+#ifndef PWM_FREQ
+#define PWM_FREQ 20000
+#endif
+#ifndef PWM_RES_BITS
+#define PWM_RES_BITS 10
+#endif
+
+/********* RATES (ya venían) *********/
 #ifndef GPS_HZ
 #define GPS_HZ 1
 #endif
@@ -31,13 +84,3 @@ static constexpr uint8_t PIN_HALL_4 = 35;
 #ifndef ACTUATOR_HZ
 #define ACTUATOR_HZ 2
 #endif
-
-// PWM (LEDC)
-static constexpr uint32_t PWM_FREQ = 20000; // 20 kHz
-static constexpr uint8_t  PWM_RES_BITS = 10; // 0..1023
-
-//gps
-static int RX_PIN = 16;
-static int TX_PIN = 17;
-
-
