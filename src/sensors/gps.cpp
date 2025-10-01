@@ -5,7 +5,7 @@
 static TinyGPSPlus gps;
 
 void gps_setup() {
-  Serial2.begin(GPS_BAUD, SERIAL_8N1, RX_PIN, TX_PIN);
+  Serial2.begin(GPS_BAUD, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);
 }
 
 bool gps_read(GPSFix& out) {
