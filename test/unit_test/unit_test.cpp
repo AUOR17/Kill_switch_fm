@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <algorithm>
 #include "config.h"
 
 // --- HALs de tu src/ ---
@@ -84,13 +85,13 @@ static void test_pwm() {
       } else if (c == '+') {
         sweep_mode = false;
         int step = DUTY_MAX / 20; // ~5%
-        duty = (uint16_t) min<int>(DUTY_MAX, duty + step);
+        duty = static_cast<uint16_t>(std::min<int>(DUTY_MAX, duty + step));
         motor_set(active, duty);
         Serial.printf("[PWM] Canal %u duty -> %u/%u (~%d%%)\n", active, duty, DUTY_MAX, (int)(100.0f * duty / DUTY_MAX));
       } else if (c == '-') {
         sweep_mode = false;
         int step = DUTY_MAX / 20;
-        duty = (uint16_t) max<int>(0, duty - step);
+        duty = static_cast<uint16_t>(std::max<int>(0, duty - step));
         motor_set(active, duty);
         Serial.printf("[PWM] Canal %u duty -> %u/%u (~%d%%)\n", active, duty, DUTY_MAX, (int)(100.0f * duty / DUTY_MAX));
       } else if (c == 'a' || c == 'A') {
